@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cookie.shop.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.cookie.shop.pojo.Order">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="total" jdbcType="REAL" property="total" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="paytype" jdbcType="BIT" property="paytype" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="datetime" jdbcType="TIMESTAMP" property="datetime" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cookie.shop.pojo.Order">
+    insert into order (id, total, amount, 
+      status, paytype, name, phone, 
+      address, datetime, user_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{total,jdbcType=REAL}, #{amount,jdbcType=INTEGER}, 
+      #{status,jdbcType=BIT}, #{paytype,jdbcType=BIT}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cookie.shop.pojo.Order">
+    update order
+    set total = #{total,jdbcType=REAL},
+      amount = #{amount,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIT},
+      paytype = #{paytype,jdbcType=BIT},
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      datetime = #{datetime,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, total, amount, status, paytype, name, phone, address, datetime, user_id
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, total, amount, status, paytype, name, phone, address, datetime, user_id
+    from order
+  </select>
+</mapper>

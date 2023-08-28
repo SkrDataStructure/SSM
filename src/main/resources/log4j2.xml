@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
+<!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，可设置一个非零的间隔秒数来检测配置变更 -->
+<Configuration>
+	<loggers>
+		<!-- 过滤 mybatis 无用信息 -->
+		<logger name="org.mybatis" level="WARN">
+			<appender-ref ref="log4j2"/>
+		</logger>
+		<!-- 过滤springframework无用信息 -->
+		<logger name="org.springframework" level="WARN">
+			<appender-ref ref="log4j2"/>
+		</logger>
+		<logger name="org.thymeleaf.TemplateEngine" level="WARN">
+			<appender-ref ref="log4j2"/>
+		</logger>
+ 		<!-- ALL <TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF-->
+		<root level="DEBUG">
+			<appender-ref ref="log4j2"/>
+		</root>
+	</loggers>
+	<appenders>
+		<console name="log4j2" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss SSS} [%t] %-3level %logger{1024} - %msg%n"/>
+		</console>
+	</appenders>
+</Configuration>

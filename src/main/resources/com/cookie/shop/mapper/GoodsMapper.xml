@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cookie.shop.mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.cookie.shop.pojo.Goods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="image1" jdbcType="VARCHAR" property="image1" />
+    <result column="image2" jdbcType="VARCHAR" property="image2" />
+    <result column="price" jdbcType="REAL" property="price" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <association column="type_id"
+                 property="type"
+                 select="com.cookie.shop.mapper.TypeMapper.selectByPrimaryKey"
+                 fetchType="lazy">
+    </association>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cookie.shop.pojo.Goods">
+    insert into goods (id, name, cover, 
+      image1, image2, price, 
+      intro, stock, type_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR}, 
+      #{image1,jdbcType=VARCHAR}, #{image2,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{intro,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cookie.shop.pojo.Goods">
+    update goods
+    set name = #{name,jdbcType=VARCHAR},
+      cover = #{cover,jdbcType=VARCHAR},
+      image1 = #{image1,jdbcType=VARCHAR},
+      image2 = #{image2,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      intro = #{intro,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, cover, image1, image2, price, intro, stock, type_id
+    from goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, cover, image1, image2, price, intro, stock, type_id
+    from goods
+  </select>
+	<select id="randomGoods" resultMap="BaseResultMap">
+      SELECT
+        *
+      FROM
+        `goods` AS t1
+          JOIN (
+          SELECT
+            ROUND(
+                        RAND( ) * ( ( SELECT MAX( id ) FROM `goods` ) - ( SELECT MIN( id ) FROM `goods` ) ) + ( SELECT MIN( id ) FROM `goods` )
+              ) AS id
+          FROM
+            `goods`
+          LIMIT 50
+        ) AS t2 ON t1.id = t2.id
+      ORDER BY
+        t1.id
+      LIMIT #{random};
+
+    </select>
+	<select id="selectCount" resultType="java.lang.Integer">
+      select count(id)
+      from goods
+    </select>
+</mapper>
