@@ -2,6 +2,7 @@ package com.cookie.shop.pojo;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable {
     final long serialVersionUID = 1L;
@@ -21,6 +22,20 @@ public class User implements Serializable {
     private Boolean isadmin;
 
     private Boolean isvalidate;
+
+    private List<Cart> shopCartList;
+
+    public long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public List<Cart> getShopCartList() {
+        return shopCartList;
+    }
+
+    public void setShopCartList(List<Cart> shopCartList) {
+        this.shopCartList = shopCartList;
+    }
 
     public Integer getId() {
         return id;
@@ -93,10 +108,12 @@ public class User implements Serializable {
     public void setIsvalidate(Boolean isvalidate) {
         this.isvalidate = isvalidate;
     }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "serialVersionUID=" + serialVersionUID +
+                ", id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
@@ -105,6 +122,7 @@ public class User implements Serializable {
                 ", address='" + address + '\'' +
                 ", isadmin=" + isadmin +
                 ", isvalidate=" + isvalidate +
+                ", shopCartList=" + shopCartList +
                 '}';
     }
 }

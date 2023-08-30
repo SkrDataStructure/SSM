@@ -19,6 +19,16 @@ public class Goods {
 
     private Type type;
 
+    private Integer quantity;
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -89,5 +99,21 @@ public class Goods {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cover='" + cover + '\'' +
+                ", image1='" + image1 + '\'' +
+                ", image2='" + image2 + '\'' +
+                ", price=" + price +
+                ", intro='" + intro + '\'' +
+                ", stock=" + stock +
+                ", type=" + type +
+                ", quantity=" + quantity +
+                '}';
     }
 }

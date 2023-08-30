@@ -79,14 +79,14 @@
                                             <del>会员价格</del>
                                         </div>
 
-                                        <form th:action="@{/cart}" class="cart" method="GET">
+                                        <div th:action="@{/add}" class="cart" method="GET">
                                             <div class="quantity">
                                                 <input type="number" size="4" class="input-text qty text" title="Qty"
-                                                       value="1" name="quantity" min="1" step="1" id="sum">
+                                                       value="1" name="quantity" min="1" step="1">
                                                 商品编号<input type="number" name="id" th:value="${goods.id}" readonly>
                                             </div>
-                                            <button type="submit" id="add_cart">添加到购物车</button>
-                                        </form>
+                                            <button id="add_cart" class="add_to_cart_button">添加到购物车</button>
+                                        </div>
 
                                         <div class="product-inner-category">
                                             <p>分类: <a href="">蛋糕</a>. Tags: <a href=""
@@ -98,7 +98,7 @@
                                             <ul class="product-tab" role="tablist">
                                                 <li role="presentation" class="active"><a href="#home"
                                                                                           aria-controls="home"
-                                                                                          role="tab" data-toggle="tab">Description</a>
+                                                                                          role="tab" data-toggle="tab">描述</a>
                                                 </li>
                                                 <li role="presentation"><a href="#profile" aria-controls="profile"
                                                                            role="tab" data-toggle="tab">Reviews</a></li>
@@ -110,7 +110,7 @@
 
                                                 </div>
                                                 <div role="tabpanel" class="tab-pane fade" id="profile">
-                                                    <h2>Reviews</h2>
+                                                    <h2>评论</h2>
                                                     <div class="submit-review">
                                                         <p><label for="name">Name</label> <input name="name"
                                                                                                  type="text"></p>
@@ -193,7 +193,7 @@
         <!-- Main Script -->
         <script src="js/main.js"></script>
         <script th:inline="javascript">
-
+            let servletContextPath = /*[[${url}]]*/
 		    function href(url){
 			    window.location.href = url;
 		    }
@@ -201,26 +201,44 @@
 
 			    $("#add_cart").on("click", function () {
 				    let id = /*[[${goods.id}]]*/{}
-				    let quantity = $("#sum").val;
-				    console.log(username+passwrod)
-				    let url = /*[[@{/login}]]*/{};
+				    let quantity = $("input[name='quantity']").val();
+				    console.log(id+quantity)
+				    let url = /*[[@{/add}]]*/{};
+					let login = /*[[@{/login}]]*/{};
+
 				    console.log(url);
 				    // Using the core $.ajax() method
 				    $.ajax({
 					    url:url,
-					    type:"post",
-					    data:"id="+username+"&quantity="+passwrod+"&checked=",
+					    type:"get",
+					    data:"id="+id+"&quantity="+quantity,
+					    beforeSend: function (xhr) {
+						    xhr.withCredentials = true
+					    },
 					    success:function (msg) {
-						    if (msg === "false"){
-							    $("#msg").html("<font color='red' size='1px'>用户名或者密码错误</font>");
+						    if (msg === "true"){
+							    alert("添加成功!");
 						    }else{
-							    href(msg);
+							    alert("添加购物车失败!你还没有登陆，确认后为你跳转到登陆页面");
+								location.href = login;
 						    }
 					    },
 					    error:""
 				    })
 			    })
 		    }
+
+
+            function setCookie(name, value, expires) {
+	            document.cookie = `${name}=${value}; expires=${expires.toUTCString()}; path=/`;
+            }
+
+            //const userExpires = new Date("2023-12-31T23:59:59Z");
+            //setCookie("user", "John", userExpires);
+
+            const languageExpires = new Date("2023-12-31T23:59:59Z");
+            setCookie("language", "en", languageExpires);
+
         </script>
 
     </body>

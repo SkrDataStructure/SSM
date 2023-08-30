@@ -40,5 +40,16 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/recommended")
+    public String recommended(HttpServletRequest request){
+        List<Goods> hotGoods = goodsService.RandomGoods(5);
+        List<Goods> newGoods = goodsService.RandomGoods(5);
+        request.setAttribute("hotGoods", hotGoods);
+        request.setAttribute("newGoods", newGoods);
+        List<Type> types = typeMapper.selectAll();
+        request.setAttribute("types", types);
+        return "recommended";
+    }
+
 
 }

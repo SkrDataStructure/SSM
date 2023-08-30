@@ -1,10 +1,13 @@
 package com.cookie.shop.controller;
 
 import com.cookie.shop.pojo.User;
+import com.cookie.shop.service.CartService;
 import com.cookie.shop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.CookieStore;
 
 /*
  * @author:             HONOR
@@ -24,6 +28,16 @@ import java.io.IOException;
 public class UserController {
     @Resource(name = "userService")
     private UserService userService;
+    @Resource
+    private CartService cartService;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+
+    @ModelAttribute
+    public void bindRequest(HttpServletRequest request, HttpServletResponse response){
+        this.request = request;
+        this.response = response;
+    }
 
     @GetMapping(path = "/login")
     public String login(HttpServletRequest request) throws IOException {
@@ -57,6 +71,29 @@ public class UserController {
             return request.getContextPath() + "/index";
         }
         return "false";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(){
+        // 删除登录token
+        Cookie cookie = new Cookie("user", null);
+        cookie.setPath(request.getServletPath());
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+
+        // 删除session
+        request.getSession().invalidate();
+
+        return "index";
+    }
+
+    @RequestMapping("/closing")
+    public String closing(){
+        User user = (User) request.getSession().getAttribute("user");
+        Integer id = user.getId();
+        cartService.selectAll(id);
+
+        return "/index";
     }
 
 }

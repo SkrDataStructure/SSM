@@ -18,4 +18,6 @@ public interface GoodsService {
     Goods getGoods(int id);
 
     PageInfo<Goods> selectByPage(Integer pageNum);
+
+    Goods selectByPrimaryKey(Integer id);
 }

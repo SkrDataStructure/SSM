@@ -40,7 +40,7 @@
                         <div th:if="${session.user}" class="user-menu" >
                             <ul>
                                 <li><a th:href="@{/#}"><i class="fa fa-user"><span th:text="${session.user.username}"></span></i></a></li>
-                                <li><a th:href="@{/checkout}"><i class="fa fa-user"></i> 登出</a></li>
+                                <li><a th:href="@{/logout}"><i class="fa fa-user"></i> 登出</a></li>
                             </ul>
                         </div>
                         <div th:if="not ${session.user}"  class="user-menu">
@@ -57,10 +57,10 @@
                                 <li class="dropdown dropdown-small">
                                     <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle"
                                        th:href="@{/#}"><span
-                                            class="key">currency :</span><span class="value">USD </span><b
+                                            class="key">currency :</span><span class="value"> </span><b
                                             class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a th:href="@{/#}">USD</a></li>
+                                        <li><a th:href="@{/#}">RMB</a></li>
                                         <li><a th:href="@{/#}">INR</a></li>
                                         <li><a th:href="@{/#}">GBP</a></li>
                                     </ul>
@@ -72,7 +72,7 @@
                                             class="key">language :</span><span class="value">English </span><b
                                             class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a th:href="@{/#}">English</a></li>
+                                        <li><a th:href="@{/#}">Chinese</a></li>
                                         <li><a th:href="@{/#}">French</a></li>
                                         <li><a th:href="@{/#}">German</a></li>
                                     </ul>
@@ -97,7 +97,7 @@
 
                     <div class="col-sm-6">
                         <div class="shopping-item">
-                            <a th:href="@{/cart}">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                            <a th:href="@{/cart}">购物车 - <span class="cart-amunt">￥0</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">0</span></a>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a th:href="@{/index}">首页</a></li>
                             <li><a th:href="@{/shop}">蛋糕</a></li>
-                            <li><a th:href="@{/single-product?id=3}">今日推荐</a></li>
+                            <li><a th:href="@{/recommended}">今日推荐</a></li>
                             <li><a th:href="@{/cart}">购物车</a></li>
                             <li><a th:href="@{/checkout}">订单</a></li>
                         </ul>

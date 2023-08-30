@@ -107,25 +107,25 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="single-promo">
                             <i class="fa fa-refresh"></i>
-                            <p>30 Days return</p>
+                            <p>不满意退货</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="single-promo">
                             <i class="fa fa-truck"></i>
-                            <p>Free shipping</p>
+                            <p>急速上门</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="single-promo">
                             <i class="fa fa-lock"></i>
-                            <p>Secure payments</p>
+                            <p>安全支付</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="single-promo">
                             <i class="fa fa-gift"></i>
-                            <p>New products</p>
+                            <p>自定义</p>
                         </div>
                     </div>
                 </div>
@@ -141,7 +141,7 @@
                     <div class="col-md-4">
                         <div class="single-product-widget">
                             <h2 class="product-wid-title">热卖</h2>
-                            <a href="" class="wid-view-more">View All</a>
+                            <a href="@{/shop}" class="wid-view-more">View All</a>
                             <div th:each="goods,iterStat:${hotGoods}" class="single-wid-product">
                                 <a th:href="@{/single-product(id=${goods.id})}"><img th:src="@{${goods.getCover()}}" alt="加载失败"
                                                                    class="product-thumb"></a>
@@ -188,7 +188,7 @@
                     <div class="col-md-4">
                         <div class="single-product-widget">
                             <h2 class="product-wid-title">新品</h2>
-                            <a href="#" class="wid-view-more">View All</a>
+                            <a th:href="@{/shop}" class="wid-view-more">View All</a>
                             <div th:each="goods,iterStat:${newGoods}" class="single-wid-product">
                                 <a th:href="@{/single-product(id=${goods.id})}"><img th:src="@{${goods.getCover()}}" alt="加载失败"
                                                                    class="product-thumb"></a>

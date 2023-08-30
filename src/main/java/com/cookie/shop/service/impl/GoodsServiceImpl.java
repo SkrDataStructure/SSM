@@ -45,4 +45,9 @@ public class GoodsServiceImpl implements GoodsService {
         PageInfo<Goods> pageInfo = new PageInfo<>(goods, page);
         return pageInfo;
     }
+
+    @Override
+    public Goods selectByPrimaryKey(Integer id) {
+        return goodsMapper.selectByPrimaryKey(id);
+    }
 }

@@ -11,6 +11,8 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="isadmin" jdbcType="BIT" property="isadmin" />
     <result column="isvalidate" jdbcType="BIT" property="isvalidate" />
+
+
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_user
@@ -52,4 +54,5 @@
       from t_user
       where username = #{username}
     </select>
+
 </mapper>

@@ -25,12 +25,16 @@
         <option value="HTML File" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="Mapper" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="32b1b8d7-2387-4638-9615-4078b736a515" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -76,7 +80,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_directory_selection": "C:/Users/HONOR/IdeaProjects/SSM/src/main/java/com/cookie/shop/service",
-    "last_opened_file_path": "C:/Users/HONOR/IdeaProjects/SSM",
+    "last_opened_file_path": "C:/Users/HONOR/IdeaProjects/SSM/src/main/webapp/WEB-INF/template",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,7 +88,7 @@
     "project.structure.last.edited": "工件",
     "project.structure.proportion": "0.13378906",
     "project.structure.side.proportion": "0.22808988",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.importing",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "spring.configuration.checksum": "def28263b4f1f23fe9c99d102c22dc96",
     "vue.rearranger.settings.migration": "true"
   },
@@ -101,9 +105,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF\template" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF" />
-      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF\template" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\js" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\test" />
     </key>
@@ -113,10 +117,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat 服务器.Tomcat 9.0.76">
-    <configuration name="SSM-endpoints中的所有" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/SSM-endpoints.http">
-      <method v="2" />
-    </configuration>
-    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GoodsServiceTest.shopCartDrop" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSM" />
       <extension name="coverage">
         <pattern>
@@ -125,9 +126,41 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.test.service" />
-      <option name="MAIN_CLASS_NAME" value="com.test.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="com.test.service.GoodsServiceTest" />
+      <option name="METHOD_NAME" value="shopCartDrop" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GoodsServiceTest.testCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SSM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test.service" />
+      <option name="MAIN_CLASS_NAME" value="com.test.service.GoodsServiceTest" />
+      <option name="METHOD_NAME" value="testCart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GoodsServiceTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SSM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test.service" />
+      <option name="MAIN_CLASS_NAME" value="com.test.service.GoodsServiceTest" />
+      <option name="METHOD_NAME" value="testInsert" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -143,6 +176,22 @@
       <option name="PACKAGE_NAME" value="com.test.service" />
       <option name="MAIN_CLASS_NAME" value="com.test.service.UserServiceTest" />
       <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest.testCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SSM" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.test.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.test.service" />
+      <option name="MAIN_CLASS_NAME" value="com.test.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testCart" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -237,16 +286,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP 请求.SSM-endpoints中的所有" />
+      <item itemvalue="JUnit.GoodsServiceTest.shopCartDrop" />
+      <item itemvalue="JUnit.GoodsServiceTest.testCart" />
+      <item itemvalue="JUnit.GoodsServiceTest.testInsert" />
+      <item itemvalue="JUnit.UserServiceTest.testCart" />
       <item itemvalue="JUnit.UserServiceTest.test" />
-      <item itemvalue="JUnit.UserServiceTest" />
       <item itemvalue="Tomcat 服务器.Tomcat 9.0.76" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP 请求.SSM-endpoints中的所有" />
+        <item itemvalue="JUnit.GoodsServiceTest.shopCartDrop" />
+        <item itemvalue="JUnit.GoodsServiceTest.testCart" />
+        <item itemvalue="JUnit.GoodsServiceTest.testInsert" />
+        <item itemvalue="JUnit.UserServiceTest.testCart" />
         <item itemvalue="JUnit.UserServiceTest.test" />
-        <item itemvalue="JUnit.UserServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +330,10 @@
       <workItem from="1691889703884" duration="9952000" />
       <workItem from="1692580389897" duration="4270000" />
       <workItem from="1692755953035" duration="2453000" />
-      <workItem from="1693202075513" duration="9678000" />
+      <workItem from="1693202075513" duration="12195000" />
+      <workItem from="1693272168287" duration="10230000" />
+      <workItem from="1693282424311" duration="11653000" />
+      <workItem from="1693365488357" duration="5171000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1693212431699</created>
@@ -286,7 +342,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693212431699</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <created>1693213117038</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693213117038</updated>
+    </task>
+    <task id="LOCAL-00003" summary="购物车">
+      <created>1693282272670</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693282272670</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +375,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="购物车" />
+    <option name="LAST_COMMIT_MESSAGE" value="购物车" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.thymeleaf.exceptions.TemplateProcessingException" package="org.thymeleaf.exceptions" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

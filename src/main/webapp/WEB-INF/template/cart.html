@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="single-sidebar">
-                            <h2 class="sidebar-title">Search Products</h2>
+                            <h2 class="sidebar-title">搜索</h2>
                             <form action="#">
                                 <input type="text" placeholder="Search products...">
                                 <input type="submit" value="Search">
@@ -51,34 +51,34 @@
                                     <table cellspacing="0" class="shop_table cart">
                                         <thead>
                                             <tr>
-                                                <th class="product-remove">index</th>
+                                                <th class="product-remove">删除</th>
                                                 <th class="product-thumbnail">&nbsp;</th>
                                                 <th class="product-name">名称</th>
-                                                <th class="product-price">价格</th>
+                                                <th class="product-price">单价</th>
                                                 <th class="product-quantity">数量</th>
                                                 <th class="product-subtotal">合计</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody th:each="iter, goodsIndex:${shopCart}">
                                             <!--              购物车功能模块                -->
                                             <tr class="cart_item">
                                                 <td class="product-remove">
-                                                    <a title="Remove this item" class="remove" href="#">×</a>
+                                                    <a title="从购物车中移除" class="remove" th:href="@{/cart/drop(id=${iter.getId()},goodsId=${iter.getGoodsId()}, quantity=${iter.getQuantity})}">×</a>
                                                 </td>
 
                                                 <td class="product-thumbnail">
-                                                    <a href="single-product.html"><img width="145" height="145"
+                                                    <a th:href="@{/single-product(id=${iter.getGoods().getId()})}" ><img width="145" height="145"
                                                                                        alt="poster_1_up"
                                                                                        class="shop_thumbnail"
-                                                                                       src="img/product-thumb-2.jpg"></a>
+                                                                                       th:src="@{${iter.getGoods().getCover()}}"></a>
                                                 </td>
 
                                                 <td class="product-name">
-                                                    <a href="single-product.html">产品描述</a>
+                                                    <a th:href="@{/single-product(id=${iter.getGoods().getId()})}" th:text="${iter.getGoods().getName()}"></a>
                                                 </td>
 
                                                 <td class="product-price">
-                                                    <span class="amount">£15.00</span>
+                                                    <span class="amount" th:text="@{'￥'+${iter.getGoods().getPrice()}}"></span>
                                                 </td>
 
                                                 <td class="product-quantity">
@@ -86,35 +86,36 @@
                                                         <input type="button" class="minus" value="-">
                                                         <input type="number" size="4" class="input-text qty text"
                                                                title="Qty"
-                                                               value="1" min="0" step="1">
+                                                               th:value="${iter.getQuantity()}" min="0" step="1">
                                                         <input type="button" class="plus" value="+">
                                                     </div>
                                                 </td>
 
                                                 <td class="product-subtotal">
-                                                    <span class="amount">£15.00</span>
+                                                    <span class="amount" th:text="'￥'+${iter.getGoods().getPrice()} * ${iter.getQuantity()}"></span>
                                                 </td>
                                             </tr>
 
 
-                                            <!--               购物车选项          -->
-                                            <tr>
-                                                <td class="actions" colspan="6">
-                                                    <div class="coupon">
-                                                        <label for="coupon_code">优惠卷:</label>
-                                                        <input type="text" placeholder="Coupon code" value=""
-                                                               id="coupon_code"
-                                                               class="input-text" name="coupon_code">
-                                                        <input type="submit" value="Apply Coupon" name="apply_coupon"
-                                                               class="button">
-                                                    </div>
-                                                    <input type="submit" value="更新购物车" name="update_cart"
-                                                           class="button">
-                                                    <input type="submit" value="结账" name="proceed"
-                                                           class="checkout-button button alt wc-forward">
-                                                </td>
-                                            </tr>
+
                                         </tbody>
+                                        <!--               购物车          -->
+                                        <tr>
+                                            <td class="actions" colspan="6">
+                                                <div class="coupon">
+                                                    <label for="coupon_code">优惠卷:</label>
+                                                    <input type="text" placeholder="Coupon code" value=""
+                                                           id="coupon_code"
+                                                           class="input-text" name="coupon_code">
+                                                    <input type="submit" value="Apply Coupon" name="apply_coupon"
+                                                           class="button">
+                                                </div>
+                                                <input type="submit" value="更新购物车" name="update_cart"
+                                                       class="button">
+                                                <input type="submit" value="结账" name="proceed"
+                                                       class="checkout-button button alt wc-forward">
+                                            </td>
+                                        </tr>
                                     </table>
                                 </form>
                             </div>
