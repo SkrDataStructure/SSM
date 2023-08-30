@@ -70,6 +70,7 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -88,7 +89,7 @@
     "project.structure.last.edited": "工件",
     "project.structure.proportion": "0.13378906",
     "project.structure.side.proportion": "0.22808988",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "spring.configuration.checksum": "def28263b4f1f23fe9c99d102c22dc96",
     "vue.rearranger.settings.migration": "true"
   },
@@ -333,7 +334,8 @@
       <workItem from="1693202075513" duration="12195000" />
       <workItem from="1693272168287" duration="10230000" />
       <workItem from="1693282424311" duration="11653000" />
-      <workItem from="1693365488357" duration="5171000" />
+      <workItem from="1693365488357" duration="5710000" />
+      <workItem from="1693376551863" duration="1904000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1693212431699</created>
@@ -356,7 +358,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693282272670</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="购物车更新">
+      <created>1693376130520</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693376130520</updated>
+    </task>
+    <task id="LOCAL-00005" summary="购物车更新">
+      <created>1693376139987</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693376139987</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +392,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="购物车" />
-    <option name="LAST_COMMIT_MESSAGE" value="购物车" />
+    <MESSAGE value="购物车更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="购物车更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -392,5 +409,9 @@
         <PinnedItemInfo parentTag="java.lang.String" memberName="value" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
