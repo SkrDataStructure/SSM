@@ -123,7 +123,7 @@
                             <li><a th:href="@{/shop}">蛋糕</a></li>
                             <li><a th:href="@{/recommended}">今日推荐</a></li>
                             <li><a th:href="@{/cart}">购物车</a></li>
-                            <li><a th:href="@{/checkout}">订单</a></li>
+                            <li><a th:href="@{/order/list}">订单</a></li>
                         </ul>
                     </div>
                 </div>
@@ -157,29 +157,29 @@
 
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-menu">
-                            <h2 class="footer-wid-title">User Navigation </h2>
+                            <h2 class="footer-wid-title">用户导航</h2>
                             <ul>
-                                <li><a href="#">My account</a></li>
-                                <li><a href="#">Order history</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                                <li><a href="#">Vendor contact</a></li>
-                                <li><a href="#">Front page</a></li>
+                                <li><a th:href="@{/account}">我的账户</a></li>
+                                <li><a th:href="@{/order}">订单</a></li>
+                                <li><a th:href="@{/cart}">购物车</a></li>
+                                <li><a th:href="@{/shop}">商城</a></li>
+                                <li><a th:href="@{/index}">首页</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="col-md-3 col-sm-6">
-                        <div class="footer-menu">
-                            <h2 class="footer-wid-title">Categories</h2>
-                            <ul>
-                                <li><a href="#">Mobile Phone</a></li>
-                                <li><a href="#">Home accesseries</a></li>
-                                <li><a href="#">LED TV</a></li>
-                                <li><a href="#">Computer</a></li>
-                                <li><a href="#">Gadets</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <!--<div class="col-md-3 col-sm-6">-->
+                    <!--    <div class="footer-menu">-->
+                    <!--        <h2 class="footer-wid-title">Categories</h2>-->
+                    <!--        <ul>-->
+                    <!--            <li><a href="#">Mobile Phone</a></li>-->
+                    <!--            <li><a href="#">Home accesseries</a></li>-->
+                    <!--            <li><a href="#">LED TV</a></li>-->
+                    <!--            <li><a href="#">Computer</a></li>-->
+                    <!--            <li><a href="#">Gadets</a></li>-->
+                    <!--        </ul>-->
+                    <!--    </div>-->
+                    <!--</div>-->
 
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-newsletter">
@@ -188,9 +188,9 @@
                                 your
                                 inbox!</p>
                             <div class="newsletter-form">
-                                <form action="#">
-                                    <input type="email" placeholder="Type your email">
-                                    <input type="submit" value="Subscribe">
+                                <form th:actopm="@{/serch}" method="get">
+                                    <input type="serch" placeholder="精品蛋糕">
+                                    <input type="submit" value="搜索">
                                 </form>
                             </div>
                         </div>
@@ -220,39 +220,27 @@
 
                         <div class="col-md-3 col-sm-6">
                             <div class="footer-menu">
-                                <h2 class="footer-wid-title">User Navigation </h2>
+                                <h2 class="footer-wid-title">用户导航</h2>
                                 <ul>
-                                    <li><a href="">My account</a></li>
-                                    <li><a href="">Order history</a></li>
-                                    <li><a href="">Wishlist</a></li>
-                                    <li><a href="">Vendor contact</a></li>
-                                    <li><a href="">Front page</a></li>
+                                    <li><a th:href="@{/account}">我的账户</a></li>
+                                    <li><a th:href="@{/order}">订单</a></li>
+                                    <li><a th:href="@{/cart}">购物车</a></li>
+                                    <li><a th:href="@{/shop}">商城</a></li>
+                                    <li><a th:href="@{/index}">首页</a></li>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-6">
-                            <div class="footer-menu">
-                                <h2 class="footer-wid-title">分类</h2>
-                                <ul>
-                                    <li><a href="">Mobile Phone</a></li>
-                                    <li><a href="">Home accesseries</a></li>
-                                    <li><a href="">LED TV</a></li>
-                                    <li><a href="">Computer</a></li>
-                                    <li><a href="">Gadets</a></li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <div class="col-md-3 col-sm-6">
                             <div class="footer-newsletter">
-                                <h2 class="footer-wid-title">Newsletter</h2>
-                                <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else
-                                    straight to
-                                    your inbox!</p>
+                                <h2 class="footer-wid-title">搜索</h2>
+                                <p>你喜欢的都在这里</p>
                                 <div class="newsletter-form">
-                                    <input type="email" placeholder="Type your email">
-                                    <input type="submit" value="Subscribe">
+                                    <form th:action="@{/serch}" method="get">
+                                        <input type="serch" placeholder="精品蛋糕">
+                                        <input type="submit" value="搜索">
+                                    </form>
                                 </div>
                             </div>
                         </div>

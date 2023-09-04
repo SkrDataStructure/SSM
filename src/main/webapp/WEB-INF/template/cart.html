@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:insert="~{fragment/IndexFragment.html::baseHeader}">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +11,6 @@
         <div th:replace="~{fragment/IndexFragment.html::#prefix}">页眉</div>
 
         <div th:replace="~{fragment/IndexFragment.html::#mainMenuAre}">header</div>
-
-
 
 
         <div class="product-big-title-area">
@@ -47,7 +45,7 @@
                     <div class="col-md-8">
                         <div class="product-content-right">
                             <div class="woocommerce">
-                                <form method="post" action="#">
+                                <form method="get" th:action="@{/cart/buy}">
                                     <table cellspacing="0" class="shop_table cart">
                                         <thead>
                                             <tr>
@@ -59,61 +57,57 @@
                                                 <th class="product-subtotal">合计</th>
                                             </tr>
                                         </thead>
+                                        <tbody th:if="${#lists.isEmpty(shopCart)}">
+                                            <td colspan="6">你还没有添加商品！</td>
+                                        </tbody>
                                         <tbody th:each="iter, goodsIndex:${shopCart}">
+
                                             <!--              购物车功能模块                -->
                                             <tr class="cart_item">
                                                 <td class="product-remove">
-                                                    <a title="从购物车中移除" class="remove" th:href="@{/cart/drop(id=${iter.getId()},goodsId=${iter.getGoodsId()}, quantity=${iter.getQuantity})}">×</a>
+                                                    <a title="从购物车中移除" class="remove"
+                                                       th:href="@{/cart/drop(id=${iter.getId()},goodsId=${iter.getGoodsId()}, quantity=${iter.getQuantity})}">×</a>
                                                 </td>
 
                                                 <td class="product-thumbnail">
-                                                    <a th:href="@{/single-product(id=${iter.getGoods().getId()})}" ><img width="145" height="145"
-                                                                                       alt="poster_1_up"
-                                                                                       class="shop_thumbnail"
-                                                                                       th:src="@{${iter.getGoods().getCover()}}"></a>
+                                                    <a th:href="@{/single-product(id=${iter.getGoods().getId()})}"><img
+                                                            width="145" height="145" alt="poster_1_up"
+                                                            class="shop_thumbnail"
+                                                            th:src="@{${iter.getGoods().getCover()}}"></a>
                                                 </td>
 
                                                 <td class="product-name">
-                                                    <a th:href="@{/single-product(id=${iter.getGoods().getId()})}" th:text="${iter.getGoods().getName()}"></a>
+                                                    <a th:href="@{/single-product(id=${iter.getGoods().getId()})}"
+                                                       th:text="${iter.getGoods().getName()}"></a>
                                                 </td>
 
                                                 <td class="product-price">
-                                                    <span class="amount" th:text="@{'￥'+${iter.getGoods().getPrice()}}"></span>
+                                                    <span class="amount"
+                                                          th:text="@{'￥'+${iter.getGoods().getPrice()}}"></span>
                                                 </td>
 
                                                 <td class="product-quantity">
                                                     <div class="quantity buttons_added">
-                                                        <input type="button" class="minus" value="-">
-                                                        <input type="number" size="4" class="input-text qty text"
-                                                               title="Qty"
-                                                               th:value="${iter.getQuantity()}" min="0" step="1">
-                                                        <input type="button" class="plus" value="+">
+                                                        <span type="number" class="input-text qty text" title="Qty"
+                                                              th:text="${iter.getQuantity()}"></span>
                                                     </div>
                                                 </td>
 
                                                 <td class="product-subtotal">
-                                                    <span class="amount" th:text="'￥'+${iter.getGoods().getPrice()} * ${iter.getQuantity()}"></span>
+                                                    <span class="amount"
+                                                          th:text="'￥'+${iter.getGoods().getPrice()} * ${iter.getQuantity()}"></span>
                                                 </td>
                                             </tr>
 
 
-
                                         </tbody>
                                         <!--               购物车          -->
-                                        <tr>
+                                        <tr th:if="${not #lists.isEmpty(shopCart)}">
                                             <td class="actions" colspan="6">
-                                                <div class="coupon">
-                                                    <label for="coupon_code">优惠卷:</label>
-                                                    <input type="text" placeholder="Coupon code" value=""
-                                                           id="coupon_code"
-                                                           class="input-text" name="coupon_code">
-                                                    <input type="submit" value="Apply Coupon" name="apply_coupon"
+                                                    <input type="submit" value="更新购物车" name="update_cart"
                                                            class="button">
-                                                </div>
-                                                <input type="submit" value="更新购物车" name="update_cart"
-                                                       class="button">
-                                                <input type="submit" value="结账" name="proceed"
-                                                       class="checkout-button button alt wc-forward">
+                                                    <input type="submit" value="结账" name="proceed"
+                                                           class="checkout-button button alt wc-forward">
                                             </td>
                                         </tr>
                                     </table>
@@ -126,7 +120,7 @@
         </div>
 
 
-        <div th:replace="~{fragment/IndexFragment.html::#footer}"/>
+        <div th:replace="~{fragment/IndexFragment.html::#footer}"></div>
 
         <!-- Latest jQuery form server -->
         <script src="js/jquery-1.8.3.min.js"></script>

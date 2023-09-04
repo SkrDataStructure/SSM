@@ -27,4 +27,14 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public int register(User user) {
+        User exist = userMapper.selectByUsernameUser(user.getUsername());
+        if (exist == null) {
+            userMapper.insert(user);
+            return 1;
+        }
+        return 0;
+    }
 }

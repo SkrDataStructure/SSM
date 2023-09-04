@@ -83,7 +83,7 @@ public class GoodsController {
         }
 
         // 添加购物车的商品
-        Integer userId = ((User)session.getAttribute("user")).getId();
+        Integer userId = ((User) session.getAttribute("user")).getId();
         Cart cart = new Cart();
         cart.setId(userId);
         cart.setGoodsId(id);
@@ -101,14 +101,15 @@ public class GoodsController {
             return "redirect:/login";
         }
 
-        List<Cart> shopCart = cartService.selectAll(user.getId());
+        List<Cart> shopCart;
+        shopCart = cartService.selectAll(user.getId());
         model.addAttribute("shopCart", shopCart);
-        return "/cart";
+        return "cart";
     }
 
 
     @RequestMapping("/cart/drop")
-    public String dropShopCart(Integer id, Integer goodsId, Integer quantity){
+    public String dropShopCart(Integer id, Integer goodsId, Integer quantity) {
         Cart dropGoods = new Cart();
 
         dropGoods.setId(id);
@@ -118,6 +119,21 @@ public class GoodsController {
 
         return "redirect:/cart";
     }
+
+
+    @GetMapping("/cart/buy")
+    public String submitOrder(Model model){
+        User user = (User) request.getSession().getAttribute("user");
+        List<Cart> carts = cartService.selectAll(user.getId());
+        Double price = 0.0;
+        for (Cart cart : carts) {
+            price += cart.getQuantity() * cart.getGoods().getPrice();
+        }
+        model.addAttribute("total", price);
+
+        return "order_submit";
+    }
+
 
 
 }

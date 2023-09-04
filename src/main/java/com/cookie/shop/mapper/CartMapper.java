@@ -14,6 +14,7 @@ import java.util.List;
 public interface CartMapper {
     List<Cart> selectByUserId(Integer id);
     int insert(Cart newGoods);
-
     int drop(Cart shopCart);
+
+    int deleteAllByUserId(Integer userId);
 }

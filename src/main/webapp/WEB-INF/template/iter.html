@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="~{fragment/IndexFragment.html::baseHeader}">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title1></title1>
+    </head>
+
+    <style>
+
+        <!--
+
+
+        .exlist {
+
+            background-color: #F9EE70;
+
+            margin: 0px auto;
+
+            padding: 5px;
+
+            width: 680px;
+
+            min-height: 200px;
+
+            height: auto;
+
+            font-family: "微软雅黑";
+
+            -webkit-box-shadow: 4px 4px 5px #333; /*webkit*/
+
+            -moz-box-shadow: 4px 4px 5px #333; /*firefox*/
+
+            box-shadow: 4px 4px 5px #333; /*opera或ie9*/
+
+        }
+
+        #title1 {
+
+            margin-left: -20px;
+
+            width: 200px;
+
+            margin: 20px auto;
+
+        }
+
+        #title1 legend {
+
+            font-size: 26px;
+
+        }
+
+        div.exlist_title1 {
+
+            background-color: #F9EE70;
+
+            width: 680px;
+
+            height: 20px;
+
+        }
+
+        div.exlist_title1 img {
+
+            float: right;
+
+            margin: -15px 10px;
+
+        }
+
+        /*-----------form-----------*/
+
+        fieldset {
+
+            width: 90%;
+
+            border: 1px dashed #666;
+
+            margin: 40px auto;
+
+        }
+
+
+        legend {
+
+            background-color: #F9EE70;
+
+            height: 120px;
+
+            height: 30px;
+
+            color: #630;
+
+            font-weight: bolder;
+
+            font-size: 20px;
+
+            line-height: 30px;
+
+            margin: -20px 10px 10px;
+
+            padding: 0 10px;
+
+        }
+
+        div.row {
+            margin-left: 20px;
+            margin: 10px;
+
+            padding: 5px;
+
+        }
+
+
+        div.row label {
+
+            height: 20px;
+
+            font-size: 16px;
+
+            line-height: 20px;
+
+            margin: 0 10px;
+
+        }
+
+
+        input.txt {
+
+            background-color: #F9EE70;
+
+            color: #333;
+
+            width: auto;
+
+            height: 20px;
+
+            margin: 0 10px;
+
+            font-size: 16px;
+
+            line-height: 20px;
+
+            border: none;
+
+            border-bottom: 1px solid #565656;
+
+        }
+
+
+        input.txt:focus {
+
+            color: #333;
+
+            background-color: #FF0;
+
+            border-bottom: 1px solid #F00;
+
+        }
+
+
+        input.btn {
+
+            width: 50px;
+
+            height: 20px;
+
+            color: #9d9d9d;
+
+            background-color: transparent;
+
+            border: 0;
+
+            padding: 0;
+
+        }
+
+
+        -->
+
+    </style>
+
+
+    <body>
+
+        <div th:replace="~{fragment/IndexFragment.html::#prefix}">页眉</div>
+        <div th:replace="~{fragment/IndexFragment.html::#mainMenuAre}">header</div>
+
+        <div id="title1" >
+        </div>
+
+
+        <fieldset>
+
+            <legend>订单信息</legend>
+
+            <div class="row">
+                <label>1. 订单编号:</label>
+                <label>
+                    <input style="width:100px" class="txt" type="text" th:value="${orderInfo.id}" readonly>
+                </label>
+            </div>
+
+            <div class="row">
+                <label>2. 交易时间:</label>
+                <input style="width:auto" class="txt" type="text"
+                       th:value="${#dates.format(orderInfo.datetime, 'yyyy-MM-dd')}" readonly>
+            </div>
+
+            <div class="row">
+
+                <label>3. 订单状态:</label><label>
+                <div th:switch="${orderInfo.status}" style="margin-left: 100px">
+                    <p th:case="'2'">已付款</p>
+                    <p th:case="'3'">已发货</p>
+                    <p th:case="'4'">已完成</p>
+                </div>
+            </label>
+
+            </div>
+
+            <div class="row">
+
+                <label>4. 支付方式:</label><label>
+                <div th:switch="${orderInfo.payType}" style="margin-left: 100px">
+                    <p th:case="'1'">微信</p>
+                    <p th:case="'2'">支付宝</p>
+                    <p th:case="'3'">货到付款</p>
+                </div>
+            </label>
+
+            </div>
+
+            <div class="row">
+
+                <label>5. 支付金额:</label><label>
+                <input class="txt" style="width:auto" type="text" th:value="${orderInfo.total + '￥'}">
+            </label>
+
+            </div>
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>收件信息</legend>
+
+            <div class="row">
+                <label>1. 收货人:</label>
+                <input style="width:100px" class="txt" type="text" th:value="${orderInfo.name}" readonly>
+            </div>
+
+            <div class="row">
+                <label>2. 收货地址:</label>
+                <input style="width:100px" class="txt" type="text" th:value="${orderInfo.address}" readonly>
+            </div>
+
+            <div class="row">
+
+                <label>3. 联系电话:</label><label>
+                <input class="txt" type="text" th:value="${orderInfo.phone}" readonly>
+            </label>
+
+            </div>
+
+            <div class="row">
+
+                <label>4. 详细地址:</label><label>
+                <input class="txt" style="width:400px" type="text" th:value="${orderInfo.address}" readonly>
+            </label>
+
+            </div>
+
+
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>商品信息</legend>
+            <table cellspacing="0" class="shop_table cart">
+                <thead>
+                    <tr>
+                        <th class="product-remove">序号</th>
+                        <th class="product-name">名称</th>
+                        <th class="product-thumbnail">&nbsp</th>
+                        <th class="product-price">单价</th>
+                        <th class="product-quantity">数量</th>
+                        <th class="product-subtotal">总计</th>
+                    </tr>
+                </thead>
+                <tbody th:each="item, itemIndex:${orderItem}">
+                    <!--              购物车功能模块                -->
+                    <tr class="cart_item">
+                        <td class="product-remove">
+                            <span th:text="${itemIndex.index + 1}" class="remove"></span>
+                        </td>
+
+                        <td class="product-name">
+                            <a th:href="@{/single-product(id=${item.getGoods().getId()})}"
+                               th:text="${item.getGoods().getName()}"></a>
+                        </td>
+
+                        <td class="product-thumbnail">
+                            <a th:href="@{/single-product(id=${item.getGoods().getId()})}"><img width="145" height="145"
+                                                                                                alt="poster_1_up"
+                                                                                                class="shop_thumbnail"
+                                                                                                th:src="@{${item.getGoods().getCover()}}"></a>
+                        </td>
+
+
+                        <td class="product-price">
+                            <span th:text="${'￥' + item.getGoods().getPrice()}"></span>
+                        </td>
+
+                        <td class="product-quantity">
+                            <div class="quantity buttons_added">
+                                <span th:text="${item.amount}"></span>
+                            </div>
+                        </td>
+
+                        <td class="product-subtotal">
+                            <span class="amount" th:text="'￥'+${item.getGoods().getPrice()} * ${item.amount}"></span>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+
+
+            </table>
+
+            <div>
+                <button><a href="#">删除订单</a></button>
+                <button><a href="#">返回上页</a></button>
+            </div>
+
+
+        </fieldset>
+
+
+    </body>
+
+</html>

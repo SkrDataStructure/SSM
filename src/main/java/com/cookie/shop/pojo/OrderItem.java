@@ -5,11 +5,35 @@ public class OrderItem {
 
     private Float price;
 
+
+
     private Integer amount;
 
     private Integer goodsId;
 
     private Integer orderId;
+
+    private Goods goods;
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", price=" + price +
+                ", amount=" + amount +
+                ", goodsId=" + goodsId +
+                ", orderId=" + orderId +
+                ", goods=" + goods +
+                '}';
+    }
 
     public Integer getId() {
         return id;

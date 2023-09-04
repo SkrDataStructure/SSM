@@ -5,34 +5,37 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="total" jdbcType="REAL" property="total" />
     <result column="amount" jdbcType="INTEGER" property="amount" />
-    <result column="status" jdbcType="BIT" property="status" />
-    <result column="paytype" jdbcType="BIT" property="paytype" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="payType" jdbcType="INTEGER" property="payType" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="datetime" jdbcType="TIMESTAMP" property="datetime" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    
+    <collection property="orderItemList" select="com.cookie.shop.mapper.OrderItemMapper.selectByPrimaryKey" column="id">
+    </collection>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order
+    delete from `order`
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cookie.shop.pojo.Order">
-    insert into order (id, total, amount, 
+    insert into `order` (id, total, amount,
       status, paytype, name, phone, 
       address, datetime, user_id
       )
     values (#{id,jdbcType=INTEGER}, #{total,jdbcType=REAL}, #{amount,jdbcType=INTEGER}, 
-      #{status,jdbcType=BIT}, #{paytype,jdbcType=BIT}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{payType,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
       #{address,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cookie.shop.pojo.Order">
-    update order
+    update `order`
     set total = #{total,jdbcType=REAL},
       amount = #{amount,jdbcType=INTEGER},
-      status = #{status,jdbcType=BIT},
-      paytype = #{paytype,jdbcType=BIT},
+      status = #{status,jdbcType=INTEGER},
+      paytype = #{paytype,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
@@ -42,11 +45,12 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, total, amount, status, paytype, name, phone, address, datetime, user_id
-    from order
+    from `order`
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select id, total, amount, status, paytype, name, phone, address, datetime, user_id
-    from order
+    from `order`
+    where user_id = #{id};
   </select>
 </mapper>

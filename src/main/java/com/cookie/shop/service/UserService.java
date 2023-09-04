@@ -11,4 +11,6 @@ import com.cookie.shop.pojo.User;
 public interface UserService {
 
     User login(String username, String password);
+
+    int register(User user);
 }

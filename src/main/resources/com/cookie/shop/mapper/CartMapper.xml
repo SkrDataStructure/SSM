@@ -16,6 +16,9 @@
 		delete from `cart`
 			where id = #{id} and goods_id = #{goodsId} and quantity = #{quantity}
 	</delete>
+	<delete id="deleteAllByUserId" parameterType="integer">
+		delete from cart where id = #{id}
+	</delete>
 
 	<select id="selectByUserId" resultMap="BaseResultMap">
 		select id, goods_id, quantity

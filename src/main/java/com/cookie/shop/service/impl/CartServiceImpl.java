@@ -34,4 +34,10 @@ public class CartServiceImpl implements CartService {
     public void dropGoods(Cart shopCart) {
         cartMapper.drop(shopCart);
     }
+
+    @Override
+    public void cleanShopCart(Integer id) {
+        int i = cartMapper.deleteAllByUserId(id);
+    }
+
 }

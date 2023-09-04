@@ -46,5 +46,12 @@
 		<property name="characterEncoding" value="UTF-8"/>
 	</bean>
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/order"/>
+			<mvc:mapping path="/cart"/>
+			<bean class="com.cookie.shop.filter.LoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

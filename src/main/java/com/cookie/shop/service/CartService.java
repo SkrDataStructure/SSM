@@ -17,4 +17,6 @@ public interface CartService{
     List<Cart> selectAll(Integer id);
 
     void dropGoods(Cart cart);
+
+    void cleanShopCart(Integer id);
 }

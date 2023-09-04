@@ -7,6 +7,8 @@
     <result column="amount" jdbcType="INTEGER" property="amount" />
     <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
     <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <association property="goods" select="com.cookie.shop.mapper.GoodsMapper.selectByPrimaryKey" column="goods_id">
+    </association>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from orderitem
@@ -34,5 +36,10 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select id, price, amount, goods_id, order_id
     from orderitem
+  </select>
+  <select id="selectAllByOrderIdInt" resultMap="BaseResultMap">
+      select id, price, amount, goods_id, order_id
+      from orderitem
+      where order_id = #{id,jdbcType=INTEGER}
   </select>
 </mapper>

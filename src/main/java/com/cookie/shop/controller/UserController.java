@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.net.CookieStore;
+import java.io.UnsupportedEncodingException;
 
 /*
  * @author:             HONOR
@@ -41,7 +41,6 @@ public class UserController {
 
     @GetMapping(path = "/login")
     public String login(HttpServletRequest request) throws IOException {
-        String requestType = request.getMethod();
         return "login";
     }
 
@@ -94,6 +93,44 @@ public class UserController {
         cartService.selectAll(id);
 
         return "/index";
+    }
+
+    @GetMapping("/register")
+    public String registerPage(){
+        // 不允许登陆后再注册
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            return "redirect:/index";
+        }
+        return "register";
+    }
+
+    @PostMapping(value = "/register")
+    public String register(String tel, String username, String password, String replace, String address, String email){
+
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setPhone(tel);
+
+        try {
+            request.setCharacterEncoding("UTF-8");
+            address = request.getParameter("address");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        user.setName(username);
+        System.out.println("提交数据"+address);
+        user.setAddress(address);
+        user.setIsadmin(false);
+
+        int register = userService.register(user);
+        if (register == 1){
+            return "zhuceSucc";
+        }
+        return "register";
     }
 
 }

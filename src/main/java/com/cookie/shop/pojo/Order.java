@@ -1,6 +1,9 @@
 package com.cookie.shop.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private Integer id;
@@ -9,9 +12,9 @@ public class Order {
 
     private Integer amount;
 
-    private Boolean status;
+    private Integer status;
 
-    private Boolean paytype;
+    private Integer payType;
 
     private String name;
 
@@ -19,6 +22,7 @@ public class Order {
 
     private String address;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date datetime;
 
     private Integer userId;
@@ -47,20 +51,47 @@ public class Order {
         this.amount = amount;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public Boolean getPaytype() {
-        return paytype;
+    public Integer getPayType() {
+        return payType;
     }
 
-    public void setPaytype(Boolean paytype) {
-        this.paytype = paytype;
+    List<OrderItem> orderItemList;
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", total=" + total +
+                ", amount=" + amount +
+                ", status=" + status +
+                ", payType=" + payType +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", datetime=" + datetime +
+                ", userId=" + userId +
+                ", orderItemList=" + orderItemList +
+                '}';
+    }
+
+    public List<OrderItem> getOrderItemList() {
+        return orderItemList;
+    }
+
+    public void setOrderItemList(List<OrderItem> orderItemList) {
+        this.orderItemList = orderItemList;
+    }
+
+    public void setPayType(Integer payType) {
+        this.payType = payType;
     }
 
     public String getName() {
