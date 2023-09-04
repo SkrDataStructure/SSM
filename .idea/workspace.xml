@@ -51,12 +51,17 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Mapper" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="8a055f1d483a1f40f1852305b58578510ae12acd" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubDefaultAccount">
@@ -110,7 +115,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_directory_selection": "C:/Users/HONOR/IdeaProjects/SSM/src/main/java/com/cookie/shop/service",
-    "last_opened_file_path": "C:/Users/HONOR/IdeaProjects/SSM/src/main/webapp/images",
+    "last_opened_file_path": "C:/Users/HONOR/IdeaProjects/SSM/src/main/webapp/admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -136,13 +141,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\admin" />
+      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF\lib" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\images" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF\template" />
-      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF\template\fragment" />
-      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp" />
-      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\resources" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\css" />
       <recent name="C:\Users\HONOR\IdeaProjects\SSM\src\main\webapp\WEB-INF\template" />
     </key>

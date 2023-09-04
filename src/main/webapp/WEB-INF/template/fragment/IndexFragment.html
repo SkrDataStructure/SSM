@@ -124,6 +124,7 @@
                             <li><a th:href="@{/recommended}">今日推荐</a></li>
                             <li><a th:href="@{/cart}">购物车</a></li>
                             <li><a th:href="@{/order/list}">订单</a></li>
+                            <li th:if="${session.admin == 'true'}"><a th:href="@{/admin/index.jsp}">后台系统</a></li>
                         </ul>
                     </div>
                 </div>

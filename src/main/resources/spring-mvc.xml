@@ -20,6 +20,7 @@
 	</mvc:annotation-driven>
 
 	<!-- 静态资源过滤 -->
+	<mvc:resources location="/admin/" mapping="/admin/**"/>
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
 	<mvc:resources location="/images/" mapping="/images/**"/>
@@ -52,6 +53,10 @@
 			<mvc:mapping path="/cart"/>
 			<bean class="com.cookie.shop.filter.LoginInterceptor"/>
 		</mvc:interceptor>
+		<!-- <mvc:interceptor> -->
+		<!-- 	<mvc:mapping path="/admin/**"/> -->
+		<!-- 	<bean class="com.cookie.shop.filter.JSPInterceptor"/> -->
+		<!-- </mvc:interceptor> -->
 	</mvc:interceptors>
 
 </beans>

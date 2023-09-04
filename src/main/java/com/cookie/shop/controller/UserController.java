@@ -61,7 +61,9 @@ public class UserController {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-
+            if (user.getIsadmin()){
+                session.setAttribute("admin", "true");
+            }
 
             Cookie cookie = new Cookie("user", user.getName());
             cookie.setPath(request.getServletPath());
